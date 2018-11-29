@@ -308,6 +308,47 @@ describe('Action Wallet Unit Tests', () => {
     });
   });
 
+  describe('initSeed()', () => {
+    it('should clear attributes and navigate to view', () => {
+      store.wallet.seedIndex = 42;
+      wallet.initSeed();
+      expect(store.wallet.seedIndex, 'to equal', 0);
+      expect(nav.goSeed, 'was called once');
+    });
+  });
+
+  describe('initPrevSeedPage()', () => {
+    it('should navigate to select seed if seedIndex < 8', () => {
+      store.wallet.seedIndex = 7;
+      wallet.initPrevSeedPage();
+      expect(nav.goSelectSeed, 'was called once');
+      expect(store.wallet.seedIndex, 'to equal', 7);
+    });
+
+    it('should decrement seedIndex if greater than 7', async () => {
+      store.wallet.seedIndex = 8;
+      wallet.initPrevSeedPage();
+      expect(nav.goSelectSeed, 'was not called');
+      expect(store.wallet.seedIndex, 'to equal', 0);
+    });
+  });
+
+  describe('initNextSeedPage()', () => {
+    it('should init seed verify if seedIndex > 16', () => {
+      store.wallet.seedIndex = 16;
+      wallet.initNextSeedPage();
+      expect(nav.goSeedVerify, 'was called');
+      expect(store.wallet.seedIndex, 'to equal', 16);
+    });
+
+    it('should increment seedIndex if less than 16', async () => {
+      store.wallet.seedIndex = 8;
+      wallet.initNextSeedPage();
+      expect(nav.goSeedVerify, 'was not called');
+      expect(store.wallet.seedIndex, 'to equal', 16);
+    });
+  });
+
   describe('initRestoreWallet()', () => {
     it('should clear attributes and navigate to view', () => {
       store.wallet.restoreIndex = 42;
