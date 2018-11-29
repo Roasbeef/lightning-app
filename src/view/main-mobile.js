@@ -10,6 +10,7 @@ import WelcomeView from './welcome';
 import LoaderView from './loader';
 import SelectSeedView from './select-seed';
 import SeedView from './seed-mobile';
+import SeedVerifyView from './seed-verify';
 import SetPinView from './set-pin-mobile';
 import SetPinConfirmView from './set-pin-confirm-mobile';
 import SeedSuccessView from './seed-success';
@@ -40,6 +41,7 @@ import ChannelDeleteView from './channel-delete';
 import ChannelCreateView from './channel-create';
 import TransactionView from './transaction';
 import TransactionDetailView from './transaction-detail';
+
 import {
   nav,
   wallet,
@@ -61,6 +63,10 @@ const Loader = () => <LoaderView />;
 const SelectSeed = () => <SelectSeedView store={store} wallet={wallet} />;
 
 const Seed = () => <SeedView store={store} wallet={wallet} />;
+
+const SeedVerify = () => (
+  <SeedVerifyView store={store} nav={nav} wallet={wallet} />
+);
 
 const SetPassword = () => <SetPinView store={store} auth={auth} nav={nav} />;
 
@@ -164,6 +170,7 @@ const MainStack = createStackNavigator(
     Loader,
     SelectSeed,
     Seed,
+    SeedVerify,
     SetPassword,
     SetPasswordConfirm,
     SeedSuccess,
