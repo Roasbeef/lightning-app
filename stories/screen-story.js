@@ -45,6 +45,7 @@ import PayBitcoinDone from '../src/view/pay-bitcoin-done';
 import PaymentFailed from '../src/view/payment-failed';
 import Loader from '../src/view/loader';
 import LoaderSyncing from '../src/view/loader-syncing';
+import LoaderSyncingMobile from '../src/view/loader-syncing-mobile';
 import SelectSeed from '../src/view/select-seed';
 import SeedSuccess from '../src/view/seed-success';
 import SeedSuccessMobile from '../src/view/seed-success-mobile';
@@ -150,6 +151,9 @@ storiesOf('Screens', module)
     <NewAddressMobile store={store} invoice={invoice} info={info} />
   ))
   .add('Loader - Syncing Chain', () => <LoaderSyncing store={store} />)
+  .add('Loader - Syncing Chain (Mobile)', () => (
+    <LoaderSyncingMobile store={store} />
+  ))
   .add('Wait', () => <Wait />)
   .add('Wait (Mobile)', () => <WaitMobile />)
   .add('Home', () => (
