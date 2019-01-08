@@ -17,8 +17,8 @@ if [ "$(uname)" == "Darwin" ]; then
 else
   # build binaries for windows
   cd assets/bin/win32
-  env GOOS="windows" GOARCH="386" go build -tags="experimental" -v github.com/lightningnetwork/lnd
-  env GOOS="windows" GOARCH="386" go build -v github.com/btcsuite/btcd
+  env GOOS="windows" GOARCH="386" go get -tags="experimental" -v github.com/lightningnetwork/lnd/@v0.5.1
+  env GOOS="windows" GOARCH="386" go get -v github.com/btcsuite/btcd/@7d2daa5bfef28c5e282571bc06416516936115ee
 
   # build the packages using electron-builder on docker
   cd $TRAVIS_BUILD_DIR
